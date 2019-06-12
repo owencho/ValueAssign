@@ -1,6 +1,5 @@
 #include "unity.h"
-#include "StringCompare.h"
-#include <stdio.h>
+#include "StringLib.h"
 
 void setUp(void)
 {
@@ -21,9 +20,9 @@ void test_stringCompare_given_bottas_and_bati_expect_a_1(void)
    int result = stringCompare("bottas" , "bati");
    TEST_ASSERT_EQUAL (1,result);           //1 means lexicographically larger
 }
-void test_stringCompare_given_summon_and_simmon_expect_a_minus_1(void)
+void test_stringCompare_given_same_and_sami_expect_a_minus_1(void)
 {
-   int result = stringCompare("summon" , "simmon");
+   int result = stringCompare("same" , "sami");
    TEST_ASSERT_EQUAL (-1,result);           //-1 means lexicographically smaller
 }
 
