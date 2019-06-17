@@ -8,9 +8,10 @@ void setUp(void)
 void tearDown(void)
 {
 }
+
 void test_assignValue_given_pineapple_equals_789123_expect_value_is_assigned(void){
   int pineappleVar = -789123;
-  NameValueMap map = {
+  NameValueMap map []= {
   {"pineapple", &pineappleVar},
     {NULL , NULL},
 };
@@ -21,7 +22,7 @@ void test_assignValue_given_pineapple_equals_789123_expect_value_is_assigned(voi
 
 void test_assignValue_given_peach_equals_234_but_wanted_watermelon_expect_no_value_is_assigned(void){
   int watermelonVar = -987654;
-  NameValueMap map = {
+  NameValueMap map [] = {
   {"watermelon", &watermelonVar},
     {NULL , NULL},
 };
@@ -32,7 +33,7 @@ void test_assignValue_given_peach_equals_234_but_wanted_watermelon_expect_no_val
 
 void test_assignValue_given_apple_equals_123_expect_value_is_assigned(void){
   int appleVar = 0;
-  NameValueMap map = {
+  NameValueMap map [] = {
   {"apple", &appleVar},
     {NULL , NULL},
 };
@@ -40,3 +41,4 @@ void test_assignValue_given_apple_equals_123_expect_value_is_assigned(void){
    assignValue(map , " orange = 0 ,apple = 123");
    TEST_ASSERT_EQUAL(123,appleVar);
 }
+

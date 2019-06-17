@@ -4,5 +4,8 @@
 
 int stringCompare(char *str1 , char *str2);
 char *skipWhiteSpaces(char *str);
-char
+char *skipNonWhiteSpaces(char *str);
+char*skipIfAlphaNumberics(char *str);
+int convertStringToInteger(char **strPtr);
+int isWordInString(char *str1 , char *str2);
 #endif // _STRINGLIB_H
