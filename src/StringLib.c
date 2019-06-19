@@ -6,10 +6,40 @@
 
 
 int isWordInString(char *str1 , char *str2){
-  return NULL;
+	int counter = 0;
+  char  a[strlen(str1)];
+  char  b[strlen(str2)];
+  char* p;
+
+for(int i=0;i<strlen(str1) ;i++)
+    {
+        a[i] = toupper(str1[i]);
+    }
+for(int i=0;i<strlen(str2) ;i++)
+    {
+        b[i] = toupper(str2[i]);
+    }
+    
+   p = strstr(b,a);
+   int j =0;
+     for(int i=0;i<strlen(str2) ;i++){
+			if((a[j]==b[i]) && (a[j+1]==b[i+1])){
+        if((a[j]==b[i]) && (a[j+1]==a[strlen(str1)-1]) && (a[strlen(str1)-1] != b[i+2])){
+			counter++;	
+        }
+      j++;
+		}
+	} 
+   if(p && ((counter) == strlen(str1)))
+     return 1;
+   else 
+     return 0;
+}
+ 
+
   
-  
-  
+
+
 int stringCompare(char *str1 , char *str2){
   
   if(str1 == NULL || str2== NULL){

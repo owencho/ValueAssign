@@ -1,4 +1,4 @@
-#include "AssignValue.h"
+/*#include "AssignValue.h"
 void assignValue(NameValueMap map[], char *str){
  
   
@@ -20,3 +20,4 @@ char* NameFind(NameValueMap insert[],char *ptr){
     
   
 }
+*/
