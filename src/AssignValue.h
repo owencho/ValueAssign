@@ -6,5 +6,8 @@ struct NameValueMap{
   char *name;
   int *value;
 };
-void AssignValue(NameValueMap map[], char *str);
+void assignValue(NameValueMap map[], char *str);
+int isEqualSign(char *ptr);
+char* NameFind(NameValueMap insert[],char *ptr);
+int isSpaceandEqualSign(char *ptr);
 #endif // _ASSIGNVALUE_H

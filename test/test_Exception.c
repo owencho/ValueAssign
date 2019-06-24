@@ -27,7 +27,7 @@ void test_isPositiveValueLessThan10_given_minus2245_expect_exception_to_be_throw
 {
     CEXCEPTION_T ex;
     int v ;
-    
+
     Try{
     v = isPositiveValueLessThan10(-2245);
     TEST_FAIL_MESSAGE("Expect ERR_VALUE_IS_NON_POSITIVE to be thrown , but none received.");
