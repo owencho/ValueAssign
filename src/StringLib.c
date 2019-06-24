@@ -7,26 +7,16 @@
 
 int isWordInString(char *str1 , char *str2){
 	int counter = 0;
-  char  a[strlen(str1)];
-  char  b[strlen(str2)];
-
-for(int i=0;i<strlen(str1) ;i++)
-    {
-        a[i] = toupper(str1[i]);
-    }
-for(int i=0;i<strlen(str2) ;i++)
-    {
-        b[i] = toupper(str2[i]);
-    }
-
-   int j =0;
-     for(int i=0;i<strlen(str2) ;i++){
-			if((a[j]==b[i] && a[j+1]==b[i+1])|| (a[j]==b[i] && b[i+1]== ' ' )|| (a[j]==b[i] && b[i+1]== '=')){
-			counter ++;
-			j++;
-			}
+  int j =0;
+    for(int i=0;i<strlen(str2) ;i++){
+			 if(toupper(str1[j])==toupper(str2[i])){
+				 	if(toupper(str1[j+1])==toupper(str2[i+1])||toupper(str2[i+1])==' '||toupper(str2[i+1])=='=' ){
+						counter ++;
+						j++;
+					}
+			 }
 		}
-
+		
    if((counter) == strlen(str1))
      return 1;
    else
