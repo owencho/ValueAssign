@@ -2,6 +2,8 @@
 #include "Exception.h"
 #include "Error.h"
 #include "CException.h"
+#include <stdio.h>
+#include <stdarg.h>
 
 void setUp(void)
 {
@@ -23,15 +25,25 @@ void test_isPositiveValueLessThan10_given_245_expect_0(void)
     TEST_ASSERT_EQUAL(0,v);
 }
 
+
+
 void test_isPositiveValueLessThan10_given_minus2245_expect_exception_to_be_thrown(void)
 {
     CEXCEPTION_T ex;
     int v ;
-
+    //my_printf("message the value is %d , %d , %s \n",34,32," and ayy hello");
     Try{
-    v = isPositiveValueLessThan10(-2245);
-    TEST_FAIL_MESSAGE("Expect ERR_VALUE_IS_NON_POSITIVE to be thrown , but none received.");
+      v = isPositiveValueLessThan10(-987);
+      TEST_FAIL_MESSAGE("Expect ERR_VALUE_IS_NON_POSITIVE to be thrown , but none received.");  //this error is important
     }Catch(ex){
-     TEST_ASSERT_EQUAL_MESSAGE(ERR_VALUE_IS_NON_POSITIVE,ex,"Wrong Exception error code");
+      dumpException(ex);
+      TEST_ASSERT_EQUAL_MESSAGE(ERR_VALUE_IS_NON_POSITIVE,ex,"Wrong Exception error code"); // need to check if ex equal to ERR_VALUE_IS_NON_POSITIVE if not then output wrong exception error code
+      freeException(ex);
     }
+}
+
+void test_A(){
+  printf("result from A() = %d\n",A(10));
+  printf("result from A() = %d\n",A(-10));
+  printf("result from A() = %d\n",A(20000));
 }
