@@ -16,7 +16,7 @@ int isWordInString(char *str1 , char *str2){
 					}
 			 }
 		}
-		
+
    if((counter) == strlen(str1))
      return 1;
    else
@@ -73,9 +73,9 @@ char*skipIfAlphaNumberics(char *str){
   return str;
 }
 
-char*skipIfNonCommarSign(char *str){
+char*skipIfNotAlphaNumberics(char *str){
     for(int i=0;i< strlen(str);i++){
-    if((str[i-1])==','){
+    if(isalnum(str[i])){
      return &str[i] ;
     }
   }
@@ -84,6 +84,6 @@ char*skipIfNonCommarSign(char *str){
 
 
 int convertStringToInteger(char **strPtr){
-   long out = strtol(*strPtr , strPtr , 10);
+   int out = strtol(*strPtr , strPtr , 10);
  return out;
 }

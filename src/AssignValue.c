@@ -5,46 +5,61 @@
 #include <ctype.h>
 #include <stdlib.h>
 void assignValue(NameValueMap map[], char *str){
-if(isEqualSign(str)){
-  int mapsize = (sizeof(*map) /sizeof(map));
-  for(int i=0 ; i<mapsize; i++ ){
-      if(map[i].name != NULL){
-  if(isWordInString(map[i].name , skipWhiteSpaces(str))){
-      char* ptr = NameFind(map,str);
-      int newValue = convertStringToInteger(&str);
-      if(map[i].name != NULL){
-        if(isWordInString(map[i].name ,ptr))
-          *map[i].value = newValue;
-        }
+  int i =0;
+  char* ptr;
+  int new = 0;
+  str = skipWhiteSpaces(str);
+
+  while(map[i].name != NULL){
+    int wordExist = isWordInString(map[i].name ,str);
+      if(wordExist){
+           ptr = NameFind(map[i].name,str);
+            if(isEqualSign(ptr)){
+              ptr = skipIfNotAlphaNumberics(ptr);
+              int new = convertStringToInteger(&ptr);
+              *map[i].value = new;
+
+          }
+      }
+                  i++;
   }
 }
-}
-}
-}
+
+
+
 int isEqualSign(char *ptr){
   for (int i = 0; i<strlen(ptr);i++){
-    if((ptr[i] == '='&&ptr[i+1]==' ')||(ptr[i] == ' '&&ptr[i+1]=='=')||ptr[i] == '=' ){
+    if(ptr[i] == '='){
      return 1;
     }
   }
   return 0;
 }
-char* NameFind(NameValueMap insert[],char *ptr){
-  int insertsize = (sizeof(insert[0])/sizeof(insert));
-for(int i=0 ; i<insertsize ; i ++){
-      char* aftercommar = skipIfNonCommarSign(ptr);
-      char* whitespaces =  skipWhiteSpaces(ptr);
-    if(isWordInString(insert[i].name , aftercommar)){
-/*      if(isWordInString(insert[i].name , skipIfNonCommarSign(aftercommar))){
-      return skipIfNonCommarSign(aftercommar);
-    }
-      else*/
-        return aftercommar;
+
+char* NameFind(char* insert,char *ptr){
+  while(insert != NULL){
+    int wordInString =isWordInString(insert,ptr);
+      if (wordInString){
+          if(ispunct(ptr[0]) || ptr[0]==',')
+            ptr = skipIfNotAlphaNumberics(ptr);
+          else if (isalnum(ptr[0]))
+            ptr = skipNonWhiteSpaces(ptr);
+          else
+            ptr = skipWhiteSpaces(ptr);
       }
-    else
-    //if(isWordInString(insert[i].name,whitespaces)){
-      return skipNonWhiteSpaces(ptr);
-  //  }
+          else
+            return ptr;
+
   }
-return NULL;
 }
+
+
+/*
+while(insert != NULL){
+  int wordInString =isWordInString(insert,ptr);
+    if (wordInString)
+      ptr = skipNonWhiteSpaces(ptr);
+     else
+      return ptr;
+}
+*/

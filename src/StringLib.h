@@ -8,5 +8,5 @@ char *skipNonWhiteSpaces(char *str);
 char*skipIfAlphaNumberics(char *str);
 int convertStringToInteger(char **strPtr);
 int isWordInString(char *str1 , char *str2);
-char*skipIfNonCommarSign(char *str);
+char*skipIfNotAlphaNumberics(char *str);
 #endif // _STRINGLIB_H
