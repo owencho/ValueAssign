@@ -4,7 +4,7 @@
 #include "Error.h"
 #include "CException.h"
 
-//Test for IsWordInString
+//Test for isWordInString
 void test_isWordInString_given_pine_and_pine_expect_a_1(void)
 {
   int result = isWordInString("pine" , "pine");
@@ -166,6 +166,14 @@ void test_skipNonWhiteSpaces_given_space_sultana_expect_nothing(void)
    TEST_ASSERT_EQUAL_STRING(sultana,noSkip);
 }
 
+void test_skipNonWhiteSpaces_given_lewis_space_hamiltion_expect_hamilton(void)
+{
+   char * lewisName = "lewis hamilton";
+   char * skip=  skipNonWhiteSpaces(lewisName);
+   TEST_ASSERT_EQUAL_PTR (lewisName + 5,skip);
+   TEST_ASSERT_EQUAL_STRING(" hamilton",skip);
+}
+
 void test_skipIfAlphaNumberics_given_rambo123456_expect_to_skip_rambo123456(void)
 {
    char * rambowithSymbols = "rambo123456()&*()  ";
@@ -174,20 +182,27 @@ void test_skipIfAlphaNumberics_given_rambo123456_expect_to_skip_rambo123456(void
    TEST_ASSERT_EQUAL_STRING("()&*()  ",symbols);
 }
 
-/*void test_skipIfAlphaNumberics_given_rambo123456_expect_to_skip_rambo123456(void)
-{
-   char * rambowithSymbols = "rambo123456()&*()  ";
-   char * symbols=  skipIfAlphaNumberics(rambowithSymbols);
-   TEST_ASSERT_EQUAL_PTR (rambowithSymbols + 11,symbols);
-   TEST_ASSERT_EQUAL_STRING("()&*()  ",symbols);
-}*/
-
 void test_skipIfAlphaNumberics_given_space_then_kree_expect_nothing_done(void)
 {
    char * spaceKree = "\t \nkree";
    char * noSkip=  skipIfAlphaNumberics(spaceKree);
    TEST_ASSERT_EQUAL_PTR (spaceKree + 0,noSkip);
    TEST_ASSERT_EQUAL_STRING(spaceKree,noSkip);
+}
+void test_skipIfNotAlphaNumberics_given_symbol_and_ironman1234_expect_to_skip_rambo123456(void)
+{
+   char * symbolsWithIronMan1234 = "()&*()ironman1234";
+   char * symbols=  skipIfNotAlphaNumberics(symbolsWithIronMan1234);
+   TEST_ASSERT_EQUAL_PTR (symbolsWithIronMan1234 + 6,symbols);
+   TEST_ASSERT_EQUAL_STRING("ironman1234",symbols);
+}
+
+void test_skipIfNotAlphaNumberics_given_gucci771234_symbol_expect_to_skip_nothing(void)
+{
+   char * gucci771234Withsymbols = "gucci771234!@#$%";
+   char * symbols=  skipIfNotAlphaNumberics(gucci771234Withsymbols);
+   TEST_ASSERT_EQUAL_PTR (gucci771234Withsymbols + 0,symbols);
+   TEST_ASSERT_EQUAL_STRING(gucci771234Withsymbols,symbols);
 }
 
 void test_convertStringToInteger_given_minus_12345678_then_abcde_expect_converted_to_integer(void)
@@ -198,21 +213,20 @@ void test_convertStringToInteger_given_minus_12345678_then_abcde_expect_converte
    TEST_ASSERT_EQUAL_PTR (numMinus12345678 +9 ,endPtr);
    TEST_ASSERT_EQUAL(-12345678,num);
 }
-//skipIfNonCommarSign
 
 
 /*
 void test_convertStringToInteger_given_1029394tabitha_expect_return_0_and_NULL_pointer(void)
 {
+   CEXCEPTION_T ex;
    char * numMinus12345678 = "1029394tabitha";
    char*endPtr = numMinus12345678;
    int num=  -11111;
- Try{
-    v = convertStringToInteger(&endPtr);
-    TEST_FAIL_MESSAGE("Expect ERR_VALUE_IS_INVALID to be thrown , but none received.");
-    }Catch(ex){
-     TEST_ASSERT_EQUAL_MESSAGE(ERR_VALUE_IS_INVALID,ex,"VALUE IS INVALID");
-    }
-
-
+     Try{
+        int v = convertStringToInteger(&endPtr);
+        TEST_FAIL_MESSAGE("Expect ERR_VALUE_IS_INVALID to be thrown , but none received.");
+        }Catch(ex){
+         TEST_ASSERT_EQUAL_MESSAGE(ERR_VALUE_IS_INVALID,ex,"VALUE IS INVALID");
+        }
+}
 */

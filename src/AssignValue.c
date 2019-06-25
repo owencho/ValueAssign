@@ -13,7 +13,7 @@ void assignValue(NameValueMap map[], char *str){
   while(map[i].name != NULL){
     int wordExist = isWordInString(map[i].name ,str);
       if(wordExist){
-           ptr = NameFind(map[i].name,str);
+           ptr = equalValueFind(map[i].name,str);
             if(isEqualSign(ptr)){
               ptr = skipIfNotAlphaNumberics(ptr);
               int new = convertStringToInteger(&ptr);
@@ -36,11 +36,11 @@ int isEqualSign(char *ptr){
   return 0;
 }
 
-char* NameFind(char* insert,char *ptr){
+char* equalValueFind(char* insert,char *ptr){
   while(insert != NULL){
     int wordInString =isWordInString(insert,ptr);
       if (wordInString){
-          if(ispunct(ptr[0]) || ptr[0]==',')
+          if(isspace(ptr[0]) && ptr[1]==',')
             ptr = skipIfNotAlphaNumberics(ptr);
           else if (isalnum(ptr[0]))
             ptr = skipNonWhiteSpaces(ptr);
@@ -52,14 +52,3 @@ char* NameFind(char* insert,char *ptr){
 
   }
 }
-
-
-/*
-while(insert != NULL){
-  int wordInString =isWordInString(insert,ptr);
-    if (wordInString)
-      ptr = skipNonWhiteSpaces(ptr);
-     else
-      return ptr;
-}
-*/

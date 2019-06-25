@@ -4,7 +4,7 @@
 #include "CException.h"
 #include <stdio.h>
 #include <stdarg.h>
-
+/*
 void setUp(void)
 {
 }
@@ -47,3 +47,4 @@ void test_A(){
   printf("result from A() = %d\n",A(-10));
   printf("result from A() = %d\n",A(20000));
 }
+*/
