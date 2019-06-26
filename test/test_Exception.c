@@ -4,7 +4,7 @@
 #include "CException.h"
 #include <stdio.h>
 #include <stdarg.h>
-/*
+
 void setUp(void)
 {
 }
@@ -31,7 +31,7 @@ void test_isPositiveValueLessThan10_given_minus2245_expect_exception_to_be_throw
 {
     CEXCEPTION_T ex;
     int v ;
-    //my_printf("message the value is %d , %d , %s \n",34,32," and ayy hello");
+    throwException(77,"message the value is %d , %d , %s \n and ayy hello");
     Try{
       v = isPositiveValueLessThan10(-987);
       TEST_FAIL_MESSAGE("Expect ERR_VALUE_IS_NON_POSITIVE to be thrown , but none received.");  //this error is important
@@ -47,4 +47,3 @@ void test_A(){
   printf("result from A() = %d\n",A(-10));
   printf("result from A() = %d\n",A(20000));
 }
-*/

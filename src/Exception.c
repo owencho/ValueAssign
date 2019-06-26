@@ -28,7 +28,7 @@ void throwException(uint32_t errorCode,char *errorMessage,...){
     buffer =malloc(actualLength + 1);               // allocate value to buffer
     vsnprintf(buffer,actualLength + 1, errorMessage, arg); //
 
-  //printf("%s \n v = %d\n", format, v); old version 1
+  /*printf("%s \n v = %d\n", format, v); old version 1 */
   //v = va_arg(arg, int);
     va_end(arg);
 
@@ -77,7 +77,7 @@ int A(int v){
   }Catch(ex){
     dumpException(ex);
     freeException(ex);
-    throwException(123,"The value is %d .throw at A",v);
+    throwException(777,"The value is %d .throw at A \n",v);
     return 0 ;
   }
 
@@ -95,7 +95,8 @@ int C(int v){
   }Catch(ex){
     dumpException(ex);
     freeException(ex);
-    throwException(111,"The value is %d .big oof",v);
+    throwException(111,"The value is %d .big oof \n",v);
+
   }
 }
 
@@ -103,14 +104,14 @@ int D(int v){
   CEXCEPTION_T ex;
   if(v < 0){
     dumpException(ex);
+    throwException(999,"The value is %d .The value should not be negative. \n",v);
     freeException(ex);
-    throwException(999,"The value is %d .The value should not be negative.",v);
   //  Throw(999);
   }
   if(v == 0 ){
     return 0;
   }
-  return 1;
+    return 1;
 }
 
 /*

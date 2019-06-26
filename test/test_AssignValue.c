@@ -60,10 +60,10 @@ void test_equalValueFind_given_huawei_and_sony_equal_7789_expect_nothing_change(
 
 }
 
-void test_equalValueFind_given_Sony_XperiaX1_and_iphone_equal_4499_expect_space_equal_3099(void){
+void test_equalValueFind_given_sony_XperiaX1_and_iphone_equal_4499_expect_space_equal_3099(void){
 
-                  char * phonePrice = "iphoneXS = 4999 ,SonyXperiaX1 = 3099";
-                  char * result = equalValueFind("SonyXperiaX1",phonePrice);
+                  char * phonePrice = "iphoneXS = 4999 ,sonyXperiaX1 = 3099";
+                  char * result = equalValueFind("sonyXperiaX1",phonePrice);
                   TEST_ASSERT_EQUAL_PTR (phonePrice+ 29,result);
                   TEST_ASSERT_EQUAL_STRING(" = 3099",result);
 
